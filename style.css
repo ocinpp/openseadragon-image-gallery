@@ -11,7 +11,7 @@ body {
 
 .gallery-container {
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -29,14 +29,18 @@ body {
 
 #reference-strip-container {
   height: 120px;
-  background-color: #222;
+  background-color: hsla(0, 0%, 0%, 0.7);
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  z-index: 9999;
+  width: 100%;
+  bottom: -4px;
 }
 
 #reference-strip {
   height: 100%;
+  width: 100%;
   display: inline-flex;
 }
 
@@ -73,7 +77,7 @@ body {
   height: 50px;
   font-size: 24px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 9999;
   transition: background-color 0.3s ease;
 }
 
@@ -93,4 +97,26 @@ body {
 .openseadragon-container .openseadragon-navprev,
 .openseadragon-container .openseadragon-navnext {
   display: none !important;
+}
+
+/* Ensure reference strip and navigation buttons are visible in fullscreen mode */
+.openseadragon-fullpage #reference-strip-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.openseadragon-fullpage .nav-button {
+  position: fixed;
+  z-index: 9999;
+}
+
+.openseadragon-fullpage .prev-button {
+  left: 20px;
+}
+
+.openseadragon-fullpage .next-button {
+  right: 20px;
 }
