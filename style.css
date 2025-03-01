@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.gallery-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#viewer-container {
+  flex: 1;
+  position: relative;
+  background-color: #000;
+}
+
+#image-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+#reference-strip-container {
+  height: 120px;
+  background-color: #222;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+#reference-strip {
+  height: 100%;
+  display: inline-flex;
+}
+
+.reference-thumb {
+  height: 100px;
+  margin: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.reference-thumb:hover {
+  transform: scale(1.05);
+}
+
+.reference-thumb.selected {
+  border-color: #3498db;
+}
+
+.reference-thumb img {
+  height: 100%;
+  width: auto;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-button {
+  left: 20px;
+}
+
+.next-button {
+  right: 20px;
+}
+
+/* Hide default OpenSeadragon navigation buttons */
+.openseadragon-container .openseadragon-navprev,
+.openseadragon-container .openseadragon-navnext {
+  display: none !important;
+}
