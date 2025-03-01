@@ -82,6 +82,8 @@ function initViewer() {
       url: images[currentImageIndex].url + "?w=2000&h=2000&fit=max",
       crossOriginPolicy: "Anonymous",
     },
+    viewportMargins: { bottom: 120 },
+    autoHideControls: false,
     showNavigationControl: true,
     navigationControlAnchor: OpenSeadragon.ControlAnchor.TOP_RIGHT,
     showNavigator: false,
