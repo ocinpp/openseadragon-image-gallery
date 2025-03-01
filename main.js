@@ -76,7 +76,7 @@ let viewer;
 function initViewer() {
   viewer = OpenSeadragon({
     id: "image-viewer",
-    prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+    prefixUrl: "/icons/",
     tileSources: {
       type: "image",
       url: images[currentImageIndex].url + "?w=2000&h=2000&fit=max",
@@ -93,7 +93,6 @@ function initViewer() {
     constrainDuringPan: true,
     maxZoomPixelRatio: 2,
     minZoomLevel: 0.5,
-    // defaultZoomLevel: 0.5,
     visibilityRatio: 0.5,
     zoomPerScroll: 1.2,
     showHomeControl: true,
@@ -119,12 +118,28 @@ function initViewer() {
   updateSelectedThumbnail();
 
   // Update the width of the reference strip when the viewer is resized
-  updateWidth();
-  viewer.addHandler("full-screen", updateWidth);
-  viewer.addHandler("resize", updateWidth);
+  updateStripContainerWidth();
+  viewer.addHandler("full-screen", updateStripContainerWidth);
+  viewer.addHandler("resize", updateStripContainerWidth);
+
+  viewer.addHandler("open", function () {
+    const zoomInButton = viewer.buttonGroup.buttons[0].element;
+    const zoomOutButton = viewer.buttonGroup.buttons[1].element;
+    const homeButton = viewer.buttonGroup.buttons[2].element;
+    const fullButton = viewer.buttonGroup.buttons[3].element;
+
+    zoomInButton.style.width = "30px";
+    zoomInButton.style.height = "30px";
+    zoomOutButton.style.width = "30px";
+    zoomOutButton.style.height = "30px";
+    homeButton.style.width = "30px";
+    homeButton.style.height = "30px";
+    fullButton.style.width = "30px";
+    fullButton.style.height = "30px";
+  });
 }
 
-function updateWidth() {
+function updateStripContainerWidth() {
   var viewerWidth = document.getElementById("image-viewer").offsetWidth;
   document.getElementById("reference-strip-container").style.width =
     viewerWidth + "px";
